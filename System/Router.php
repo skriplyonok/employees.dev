@@ -33,10 +33,6 @@ class System_Router
     {
         // Анализируем путь
         $this->_getController($file, $controllerName, $actionName, $args);
-        dump($file);
-        dump($controllerName);
-        dump($actionName);
-        dump($args);
 
         // Файл доступен?
         if (!is_readable($file)) {

@@ -4,18 +4,24 @@
  */
 $employees = $view->getParam('all');
 $limit = $view->getParam('limit');
+$departments = $view->getParam('departments');
 $selectValues = [2, 4, 6];
 $url = rtrim($_SERVER['REQUEST_URI'], '/\\');
-$url = explode('/', $url);
-if (is_numeric(end($url))){
-    array_pop($url);
+$urlArr = explode('/', $url);
+if (is_numeric(end($urlArr))){
+    array_pop($urlArr);
 }
-$url = implode('/', $url);
+$url = implode('/', $urlArr);
 ?>
 <form action="<?= $url ?>" id="select-menu-form" method="post">
-    <select name="select-menu">
+    <select name="select-department">
+        <?php foreach ($departments as $department): ?>
+            <option value="<?= $department->name ?>"<?= in_array($department->name, $urlArr) ? ' selected ' : '' ?>><?= $department->name ?></option>
+        <?php endforeach; ?>
+    </select>
+    <select name="select-limit">
         <?php foreach ($selectValues as $value): ?>
-            <option value="<?= $value ?>"<?= $value == $limit ? ' selected ' : ' ' ?>><?= $value ?></option>
+            <option value="<?= $value ?>"<?= $value == $limit ? ' selected ' : '' ?>><?= $value ?></option>
         <?php endforeach; ?>
     </select>
 </form>
@@ -41,7 +47,7 @@ $url = implode('/', $url);
             <td><?= $employee->firstname; ?></td>
             <td><?= $employee->lastname; ?></td>
             <td><?= $employee->middlename; ?></td>
-            <td><?= $employee->department_id; ?></td>
+            <td><?= $employee->department_name; ?></td>
             <td><?= $employee->salary; ?></td>
             <td><?= $employee->salary_type; ?></td>
             <td><?= $employee->position; ?></td>

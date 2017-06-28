@@ -42,14 +42,22 @@ class Model_Employee
      * @var int
      */
     public $birthday;
+    /**
+     * @var
+     */
+    public $department_name;
+
 
     /**
-     * @return Model_Employee[]
+     * @param string $limit
+     * @param string $offset
+     * @param string $department
+     * @return array
      */
     public static function getAll($limit, $offset, $department)
     {
         $dbEmployee = new Model_Db_Table_Employee();
-        $data = $dbEmployee->getAll($limit, $offset);
+        $data = $dbEmployee->getAll($limit, $offset, $department);
         $all = [];
         if(!empty($data))
         {
@@ -59,15 +67,20 @@ class Model_Employee
                 $all[$key]->firstname      = $value->firstname;
                 $all[$key]->lastName       = $value->lastname;
                 $all[$key]->middlename     = $value->middlename;
-                $all[$key]->department_id  = $value->department_id;
+                $all[$key]->department_id  = isset($value->department_id) ? $value->department_id : null;
                 $all[$key]->salary         = $value->salary;
                 $all[$key]->salary_type    = (int)$value->salary_type;
                 $all[$key]->position       = $value->position;
                 $all[$key]->birthday       = $value->birthday;
+                $all[$key]->department_name = $value->name;
             }
         }
         return $all;
     }
+
+    /**
+     * @return mixed
+     */
     public static function getCount(){
         $dbEmployee = new Model_Db_Table_Employee();
         $data = $dbEmployee->getCount();

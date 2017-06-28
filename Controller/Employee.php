@@ -5,20 +5,20 @@ class Controller_Employee extends System_Controller
     public function indexAction()
     {
         $args = $this->getArgs();
-        if(count($args) == 2){
-            $department = !empty(current($args)) ? array_shift($args) : '';
-        }
+        $department = !empty($args) && !is_numeric(current($args)) ? array_shift($args) : '';
         $activePage = empty($args) ? 1 : current($args);
-        $limit = empty($_POST['select-menu']) ? 2 : $_POST['select-menu'];
+        $params = $this->getParams();
+        $limit = empty($params['select-limit']) ? 2 : $params['select-limit'];
         try {
-//            $modelName = $this->_modelName;
             $all = Model_Employee :: getAll($limit, ($activePage-1)*$limit, $department);
+            $count = Model_Employee::getCount();
+            $departments = Model_Department::getAll();
+
             $this->view->setParam('all', $all);
             $this->view->setParam('limit', $limit);
             $this->view->setParam('activePage', $activePage);
-            $count = Model_Employee::getCount();
             $this->view->setParam('count', $count);
-//            $this->view->setParam('table', $this->_tableName);
+            $this->view->setParam('departments', $departments);
         }
         catch(Exception $e) {
             $this->view->setParam('error', $e->getMessage());
