@@ -33,6 +33,10 @@ class System_Router
     {
         // Анализируем путь
         $this->_getController($file, $controllerName, $actionName, $args);
+        dump($file);
+        dump($controllerName);
+        dump($actionName);
+        dump($args);
 
         // Файл доступен?
         if (!is_readable($file)) {
@@ -46,7 +50,7 @@ class System_Router
         $class = 'Controller_' . $controllerName;
         $action = $actionName . 'Action';
 
-        $controller = new $class($action);
+        $controller = new $class();
         $controller->setArgs($args);
 
         // Действие доступно?
@@ -75,13 +79,15 @@ class System_Router
      * @param string $actionName
      * @param string $args
      */
-    private function _getController(&$file, &$controller, &$actionName, &$args)
+    private function _getController(&$file, &$controllerName, &$actionName, &$args)
     {
          $route = empty($_GET['route']) ? 'index' : $_GET['route'];
 
         // Получаем раздельные части
         $route = trim($route, '/\\');
         $parts = explode('/', $route);
+
+        $args = [];
 
         // Находим контроллер
         $cmd_path = $this->_path;
@@ -91,35 +97,31 @@ class System_Router
             // Проверка существования папки
             if (is_dir($fullpath)) {
                 $cmd_path .= $part . DS;
-                array_shift($parts);
                 continue;
             }
 
             // Находим файл
             if (is_file($fullpath . '.php')) {
-                $controller = $part;
-                array_shift($parts);
-                break;
+                $controllerName = ucfirst($part);
+                continue;
             }
-        }
 
+
+            $class = 'Controller_' . $controllerName;
+            // Действие доступно?
+            if (is_callable(array(new $class(), $part . 'Action'))) {
+                $actionName = $part;
+                continue;
+            }
+            $args[] = $part;
+        }
         // если урле не указан контролер, то испольлзуем поумолчанию index
-        if (empty($controller)) {
-            $controller = 'index';
+        if (empty($controllerName)) {
+            $controllerName = 'index';
         }
-
-        // Получаем экшен
-        $actionName = array_shift($parts);
         if (empty($actionName)) {
             $actionName = 'index';
         }
-
-        if (is_numeric($actionName)){
-            $args = [$actionName];
-            $actionName = 'index';
-        }
-
-        $file = $cmd_path . $controller . '.php';
-//        $args = $parts;
+        $file = $cmd_path . $controllerName . '.php';
     }
 }

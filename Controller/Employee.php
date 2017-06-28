@@ -5,11 +5,14 @@ class Controller_Employee extends System_Controller
     public function indexAction()
     {
         $args = $this->getArgs();
+        if(count($args) == 2){
+            $department = !empty(current($args)) ? array_shift($args) : '';
+        }
         $activePage = empty($args) ? 1 : current($args);
         $limit = empty($_POST['select-menu']) ? 2 : $_POST['select-menu'];
         try {
 //            $modelName = $this->_modelName;
-            $all = Model_Employee :: getAll($limit, ($activePage-1)*$limit);
+            $all = Model_Employee :: getAll($limit, ($activePage-1)*$limit, $department);
             $this->view->setParam('all', $all);
             $this->view->setParam('limit', $limit);
             $this->view->setParam('activePage', $activePage);

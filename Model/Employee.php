@@ -46,13 +46,13 @@ class Model_Employee
     /**
      * @return Model_Employee[]
      */
-    public static function getAll($limit, $offset)
+    public static function getAll($limit, $offset, $department)
     {
         $dbEmployee = new Model_Db_Table_Employee();
         $data = $dbEmployee->getAll($limit, $offset);
+        $all = [];
         if(!empty($data))
         {
-            $all = [];
             foreach ($data as $key => $value) {
                 $all[$key]  = new self();
                 $all[$key]->id             = $value->id;
