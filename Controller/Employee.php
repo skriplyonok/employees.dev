@@ -21,7 +21,7 @@ class Controller_Employee extends System_Controller
             $this->view->setParam('departments', $departments);
         }
         catch(Exception $e) {
-            $this->view->setParam('error', $e->getMessage());
+            throw new Exception('404 error! Page not found');
         }
     }
 }

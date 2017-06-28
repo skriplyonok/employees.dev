@@ -16,6 +16,7 @@ window.onload = function() {
             url[url.length] = value;
         }else if(!isNaN(url[url.length-1])){
             url[url.length-2] = value;
+            // url.pop();
         }else{
             url[url.length-1] = value;
         }

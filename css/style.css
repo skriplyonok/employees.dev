@@ -69,6 +69,16 @@ header .container{
     padding:10px 10px;
     max-height: 122px;
 }
+footer{
+     text-align: center;
+     background-color:#000;
+     color:#fff;
+     padding: 10px;
+     position:relative;
+     width:100%;
+     height:40px;
+     margin-top:-40px;
+ }
 main{
     padding-top:122px;
     padding-bottom: 40px;

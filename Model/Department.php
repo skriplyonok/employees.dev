@@ -14,7 +14,10 @@ class Model_Department
      * @var string
      */
     public $name;
-
+    /**
+     * @var string
+     */
+    public $slug;
     /**
      * @return Model_Department[]
      */
@@ -27,8 +30,9 @@ class Model_Department
         {
             foreach ($data as $key => $value) {
                 $all[$key]  = new self();
-                $all[$key]->id             = isset($value->id) ? $value->id : null;
+                $all[$key]->id        = $value->id;
                 $all[$key]->name      = $value->name;
+                $all[$key]->slug      = $value->slug;
             }
         }
         return $all;

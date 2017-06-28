@@ -2,9 +2,15 @@
 
 error_reporting(E_ALL);
 
+/**
+ *
+ */
 define('DS', DIRECTORY_SEPARATOR);
 // Узнаём путь к файлам сайта
 $sitePath = realpath(dirname(__FILE__) . DS);
+/**
+ *
+ */
 define('SITE_PATH', $sitePath);
 
 $config = file_get_contents(SITE_PATH . DS . 'config.xml');
@@ -47,7 +53,7 @@ function loadClass($className)
         include_once $file;
     }
     else{
-        throw new Exception('File ' . $file . ' not found', 1);
+        throw new Exception('404 error! Page not found');
     }
 }
 
@@ -61,6 +67,9 @@ catch(Exception $e) {
     echo $e->getMessage();
 }
 
+/**
+ * @param $var
+ */
 function dump($var){
     echo '<pre>';
     var_dump($var);

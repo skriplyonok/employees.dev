@@ -36,7 +36,7 @@ class System_Router
 
         // Файл доступен?
         if (!is_readable($file)) {
-            throw new Exception('404 error! Controller ' . '\'' . $controllerName . '\''. ' not found');
+            throw new Exception('404 error! Page not found');
         }
 
         // Подключаем файл
@@ -51,7 +51,7 @@ class System_Router
 
         // Действие доступно?
         if (!is_callable(array($controller, $action))) {
-            throw new Exception('404 error. Action ' . '\'' . $action . '\''. ' Not Found');
+            throw new Exception('404 error! Page not found');
         }
 
         call_user_func(array($controller, $action));
