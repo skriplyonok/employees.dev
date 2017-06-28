@@ -1,0 +1,376 @@
+*{
+    padding:0;
+    margin:0;
+    box-sizing:border-box;
+    font:16px/18px Arial, Verdana sans-serif;
+}
+body{
+    background:#fff;
+    margin: 0;
+}
+html, body{
+    height:100%;
+}
+.main-wrapper {
+    height:100%;
+    overflow:auto;
+}
+main{
+    min-height:100%;
+}
+ul{
+    list-style:none;
+}
+a{
+    text-decoration:none;
+    color:#fff;
+}
+h1{
+    text-align: center;
+    font-size: 30px;   
+    line-height:32px;
+    margin-bottom:30px;
+    font-weight:bold;
+}
+h2{
+    text-align: center;
+    font-size: 25px;   
+    line-height:27px;
+    margin-bottom:40px;   
+}
+.main-wrapper{
+    width:100%;	
+    position:relative;
+    background-color: #F5F5DC;
+}
+.main-wrapper, .container{
+    position:relative;
+    margin:0 auto;
+}
+.container{
+    max-width:1200px;
+}
+.container:after{
+    content:"";
+    display:block;
+    clear:both;
+    width:100%;
+}
+header{
+    position:relative;
+    width:100%;
+    background-color:#000;
+    color:#fff;
+    z-index:2;
+    height: 122px;
+    margin-bottom:-122px;
+}
+header .container{
+    padding:10px 10px;
+    max-height: 122px;
+}
+.logo{
+    float:left;
+    padding: 29px 10px;
+    text-align: center;
+    width:150px;
+}
+.logo a, .logo span{
+    display:block;
+}
+.logo .mainlogo{
+    font:30px/32px Impact,Charcoal, sans-serif;
+    color:#DAA520;
+}
+.logo .slogan{
+    font-style:italic;
+    font-family:Florence;
+    font-size:17px;
+    line-height:19px;
+}
+#mainmenu{
+    text-align: center;
+    text-transform: uppercase;
+    float:left;
+    padding: 38px 0;
+    width: 790px;
+    position:relative;
+}
+#mainmenu ul{
+    position:relative;
+    left:50%; 
+}
+#mainmenu li{
+    display:inline-block;
+    margin-left:7px;
+    border-left:1px solid #fff;
+    padding:0 0 0 11px;
+    position:relative;
+    left:-50%;
+}
+#mainmenu li:hover a, .formdata a:hover, footer a:hover, .adminMenu a:hover{
+    color:#FFD700;
+}
+#mainmenu li:first-child{
+    margin-left:0;
+    border-left:none;
+}
+#mainmenu a{
+    font-weight:bold;
+}
+.authorize{
+    float:right;
+    width:210px;
+    height:105px;
+    position:relative;
+}
+#loginFormDiv input{
+    margin-bottom:2px;
+    background-color:#696969;
+    border:none;
+    color:#fff;
+    padding:2px 2px 2px 25px;
+    width:200px;
+    border-radius:5px;
+    text-align:left;
+}
+#loginFormDiv input[type="submit"]{
+    background-color:#000;
+    border:2px solid #DAA520;
+}
+#loginFormDiv input[type="submit"]:hover{
+    background-color:#DAA520;
+    border-color:#fff;
+}
+#loginFormDiv input[name="login"]{  
+    width:100px;
+}
+#loginFormDiv input[name="save"]{  
+    width:12px;
+    vertical-align: middle;
+}
+
+/*loginData*/
+.formdata {
+    text-align: center;
+    padding-top:35px;
+}
+.formdata div{
+    margin-bottom:5px;
+}
+.formdata a{
+    text-decoration: underline;
+}
+.error{
+    color: red;
+    font-size: x-large;
+}
+#error{
+    width:200px; margin:0 auto; color:red;
+    position:absolute;
+    right:100%;
+    bottom:0;
+}
+#userEmail{
+    width:200px;
+}
+#exit{
+    width:200px;
+}
+.hide{
+    display:none;
+}
+
+
+main{
+    padding-top:122px;
+    padding-bottom: 40px;
+    background-color: #fff;
+}
+.content{
+    padding:20px;
+}
+main, main a{
+    color:#000;
+}
+.adminMenu{
+    text-align: center;
+    margin:20px 0 0 20px;
+    float:left;
+}
+.adminMenu li{
+    margin-bottom:10px;
+}
+.adminMenu a{
+    text-transform: uppercase;
+    font-size: 16px;
+    line-height: 18px;
+    font-weight:bold;
+}
+table{
+    margin: 0 auto 30px;
+    border-collapse: collapse;
+    border-spacing: 0;
+    font-size:10px;
+    line-height:12px;
+}
+td, th{
+    border:1px solid #000;
+    text-align:center;
+    padding:2px 5px;
+}
+th{
+    background-color:#808080;
+    color:#fff;
+    font-weight:bold;
+}
+tbody tr:nth-child(even){
+    background-color:#DCDCDC;
+}
+.edit, .delete{
+    width:15px;
+    height:15px;
+    border:none;
+}
+th:first-child{
+    position:relative;
+}
+img.photo{
+    width:50px;
+    height:auto;
+}
+
+/*Form*/
+.formwrapper{
+    padding: 10px;
+    width: 630px;
+    box-shadow: 2px 2px 15px 5px #cdcdcd;
+    margin: 0 auto;
+}
+.formwrapper [type="text"], .formwrapper [type="password"], .formwrapper [type="submit"], .formwrapper [type="date"]{
+    margin-bottom:5px;
+    border:1px solid #000;
+    padding:2px 5px 2px 10px;
+    width:200px;
+}
+.formwrapper [type="file"]{ 
+    margin-bottom:5px;
+}
+.formwrapper [type="submit"]:hover{
+    cursor:pointer;
+}
+.checkbox{
+    margin-bottom:5px;
+    border:1px solid #000;
+    padding:3px 5px 3px 10px;  
+}
+.checkbox input{
+    vertical-align:middle;
+    margin-right:2px;
+}
+.checkbox label{
+    margin-right:5px;
+}
+
+a.insert {
+    position: absolute;
+    left: 5px;
+    bottom: 120%;
+    border: 1px solid #000;
+    border-radius: 5px;
+    padding: 2px 5px;
+    background-color: #D3D3D3;
+}
+a.insert:hover, .formwrapper [type="submit"]:hover{
+    color:#B8860B;
+    border-color:#B8860B;
+    background-color: #fff;
+}
+.submitInfo{
+    color:#f00;
+    margin:10px 0;
+}
+.submitInfo + a.insert{
+    position:static;
+}
+
+
+/*styling file-upload*/
+.file-upload{
+  position: relative;
+  overflow: hidden; 
+  font-size: 1em;  
+  height: 1.6em;   
+  line-height: 1.125em; 
+  margin-bottom:5px;
+}
+.file-upload > button{
+    float: left;
+  height: 1.125em;  
+    height: 100%;
+  width:200px;
+  border:1px solid #000;
+  padding:2px 5px 2px 10px;
+}
+.file-upload > div{
+  height: 1.125em;
+  padding:3px 5px 2px 205px;
+  cursor: pointer;
+}
+.file-upload input[type=file]{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+
+.footer{
+    text-align: center;
+    background-color:#000;
+    color:#fff;
+    padding: 10px;
+    position:relative;
+    width:100%;
+    height:40px;
+    margin-top:-40px;
+}
+.footer a{
+    text-decoration:underline;
+}
+
+/*pop-up*/
+.popup{
+    width:100%;
+    height:100%;
+    overflow:auto;
+    position:fixed;
+    top:0px;
+    z-index:100;
+    display:none;
+    background-color:rgba(0, 0, 0, 0.5);
+}
+.popup .popup-content{
+    margin:10% auto 0px auto;
+    width:250px;
+    height:150px;
+    background: #fff;
+    position:relative;
+    color:#000;
+    text-align:center;
+    padding-top:35px;
+}
+.popup p{
+    font-size:30px;
+    line-height:32px;
+    margin-bottom:35px;
+}
+.popup a{
+    color:#000;
+    position:static;
+    padding:5px 15px;
+    margin:0 20px;
+}

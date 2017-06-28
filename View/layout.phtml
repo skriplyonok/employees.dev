@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employees</title>
+    <link rel="stylesheet" text="text/css" href="/css/style.css?<?php echo time(); ?>">
+    <meta charset="utf-8">
+    <script type="text/javascript" src="/js/app.js?<?php echo time(); ?>"></script>
+</head>
+<body>
+    <div class="main-wrapper">
+        <main class="container">
+            <div class="content">
+                <?php
+                if (file_exists($contentFileName)) {
+                    include $contentFileName;
+                }
+                ?>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

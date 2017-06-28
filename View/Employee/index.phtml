@@ -1,0 +1,41 @@
+<?php
+$employees = $view->getParam('all');
+?>
+<form action="<?= $_SERVER['REQUEST_URI'] ?>" id="select-menu-form">
+    <select name="page-size">
+        <option value="2">2</option>
+        <option value="4">4</option>
+        <option value="6">6</option>
+        <option value="2">Все</option>
+    </select>
+</form>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Имя</th>
+        <th>Фамилия</th>
+        <th>Отчество</th>
+        <th>Отдел</th>
+        <th>ЗП</th>
+        <th>Тип ЗП</th>
+        <th>Должность</th>
+        <th>День рождения</th>
+    </tr>
+    </thead>
+    <tbody>
+    <?php foreach($employees as $employee): ?>
+        <tr>
+            <td><?= $employee->id; ?></td>
+            <td><?= $employee->firstname; ?></td>
+            <td><?= $employee->lastname; ?></td>
+            <td><?= $employee->middlename; ?></td>
+            <td><?= $employee->department_id; ?></td>
+            <td><?= $employee->salary; ?></td>
+            <td><?= $employee->salary_type; ?></td>
+            <td><?= $employee->position; ?></td>
+            <td><?= $employee->birthday; ?></td>
+        </tr>
+    <?php endforeach; ?>
+    </tbody>
+</table>
