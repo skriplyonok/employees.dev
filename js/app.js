@@ -9,8 +9,7 @@ window.onload = function() {
     }
 
     selectDepartment.onchange = function () {
-        console.log(this.options[this.selectedIndex].text);
-        var value = this.options[this.selectedIndex].text;
+        var value = this.options[this.selectedIndex].value;
         var url = window.location.pathname;
         url = url.split('/');
         if(url.length == 2){

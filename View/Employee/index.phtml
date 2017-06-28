@@ -13,6 +13,7 @@ if (is_numeric(end($urlArr))){
 }
 $url = implode('/', $urlArr);
 ?>
+<h1>Сотрудники</h1>
 <form action="<?= $url ?>" id="select-menu-form" method="post">
     <select name="select-department">
         <?php foreach ($departments as $department): ?>
