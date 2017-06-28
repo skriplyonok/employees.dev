@@ -46,10 +46,10 @@ class Model_Employee
     /**
      * @return Model_Employee[]
      */
-    public static function getAll()
+    public static function getAll($limit, $offset)
     {
         $dbEmployee = new Model_Db_Table_Employee();
-        $data = $dbEmployee->getAll();
+        $data = $dbEmployee->getAll($limit, $offset);
         if(!empty($data))
         {
             $all = [];
@@ -65,7 +65,13 @@ class Model_Employee
                 $all[$key]->position       = $value->position;
                 $all[$key]->birthday       = $value->birthday;
             }
-            return $all;
         }
+        return $all;
+    }
+    public static function getCount(){
+        $dbEmployee = new Model_Db_Table_Employee();
+        $data = $dbEmployee->getCount();
+        $result = current(current($data));
+        return $result;
     }
 }

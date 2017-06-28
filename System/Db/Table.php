@@ -31,17 +31,22 @@ abstract class System_Db_Table
         return $this->_table;
     }
 
-    public function getAll()
+    public function getAll($limit, $offset)
     {
-        $sql    = 'select * from `' . $this->getTable() . '`';
-
+        $limit = !empty($limit) ? ' limit ' . $limit : '';
+        $offset = !empty($offset) ? ' offset ' . $offset : '';
+        $sql    = 'select * from `' . $this->getTable() . '`' . $limit . $offset;
         $sth    = $this->getConnection()->prepare($sql);
-        
         $sth->execute();
-        
         $result = $sth->fetchAll(PDO::FETCH_OBJ);
-        
-        return $result;       
+        return $result;
+    }
+    public function getCount(){
+        $sql = 'select count(*) from `' . $this->getTable() . '`';
+        $sth    = $this->getConnection()->prepare($sql);
+        $sth->execute();
+        $result = $sth->fetchAll(PDO::FETCH_OBJ);
+        return $result;
     }
 }
 

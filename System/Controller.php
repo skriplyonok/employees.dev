@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Class System_Controller
+ */
 abstract class System_Controller
 {
 
@@ -14,21 +17,35 @@ abstract class System_Controller
      * @var int
      */
     protected $_userId;
-    
+
+    /**
+     * @var
+     */
     protected $_tableName;
-    
+
+    /**
+     * @var
+     */
     protected $_modelName;
 
+    /**
+     * @var
+     */
+    protected $_args;
 
+
+    /**
+     * @param $args
+     */
     public function setArgs($args)
     {
-        if(in_array('table', $args) )
-        {           
-            $this->_tableName = array_pop($args);
-            $this->_modelName = 'Model_' . ucfirst($this->_tableName);
-            array_pop($args);
-        }
-        $this->args = $args;
+//        if(in_array('table', $args) )
+//        {
+//            $this->_tableName = array_pop($args);
+//            $this->_modelName = 'Model_' . ucfirst($this->_tableName);
+//            array_pop($args);
+//        }
+        $this->_args = $args;
     }
     
     /**
@@ -37,65 +54,37 @@ abstract class System_Controller
      */
     public function getArgs()
     {
-        $tempArgs = array();
-        $count = count($this->args);
-        for($i = 0; $i < $count - 1; $i += 2)
-        {
-            $tempArgs[$this->args[$i]] = $this->args[$i+1];
-        }
-        return $tempArgs;
+//        $tempArgs = array();
+//        $count = count($this->_args);
+//        for($i = 0; $i < $count - 1; $i += 2)
+//        {
+//            $tempArgs[$this->_args[$i]] = $this->_args[$i+1];
+//        }
+        return $this->_args;
     }
 
+    /**
+     * System_Controller constructor.
+     */
     public function __construct() {
         $this->view = new System_View();
-        $this->_userId = $this->_getSessParam('currentUser');
     }
+
+    /**
+     * @return mixed
+     */
     public function getParams()
     {
         return $_REQUEST;
     }
     /**
      * 
-     * Save session's data
-     * 
-     * @param string $key
-     * @param mixed $value
-     */
-    protected function _setSessParam($key, $value)
-    {
-        $_SESSION[$key] = $value;
-    }
-    /**
-     * Retrieve data from session
-     * 
-     * @param string $key
-     * @return mixed
-     */
-    protected function _getSessParam($key)
-    {   
-        if(!empty($_SESSION)) {
-            return array_key_exists($key, $_SESSION) ? $_SESSION[$key] : NULL;
-        }
-        return NULL;
-    }
-    /**
-     * 
-     * @param type $key
+     * @param $key
      * @return mixed
      */
     public function getParamByKey($key)
     {
         return !empty($_REQUEST[$key]) ? $_REQUEST[$key] : NULL;
-    }
-    public function isAdmin()
-    {
-         $userRole = $this->_getSessParam('userRole');
-        if($userRole == Model_User::ROLE_ADMIN) {
-            
-        }
-        else {
-            header('Location: /');
-        }          
     }
 
 }

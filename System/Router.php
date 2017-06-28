@@ -114,7 +114,12 @@ class System_Router
             $actionName = 'index';
         }
 
+        if (is_numeric($actionName)){
+            $args = [$actionName];
+            $actionName = 'index';
+        }
+
         $file = $cmd_path . $controller . '.php';
-        $args = $parts;
+//        $args = $parts;
     }
 }
