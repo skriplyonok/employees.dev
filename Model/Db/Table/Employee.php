@@ -27,4 +27,20 @@ class Model_Db_Table_Employee extends System_Db_Table
         $result = $sth->fetchAll(PDO::FETCH_OBJ);
         return $result;
     }
+
+    /**
+     * @return array
+     */
+    public function getCount($department = ''){
+        $limit = !empty($limit) ? ' limit ' . $limit : '';
+        $offset = !empty($offset) ? ' offset ' . $offset : '';
+        $department = !empty($department) ? ' where department.slug="' . $department . '"' : '';
+        $sql = 'select count(*) from employee JOIN department
+          on employee.department_id = department.id'
+            . $department;
+        $sth    = $this->getConnection()->prepare($sql);
+        $sth->execute();
+        $result = $sth->fetchAll(PDO::FETCH_OBJ);
+        return $result;
+    }
 }

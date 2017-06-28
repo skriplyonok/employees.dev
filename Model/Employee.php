@@ -79,11 +79,14 @@ class Model_Employee
     }
 
     /**
+     * @param $limit
+     * @param $offset
+     * @param $department
      * @return mixed
      */
-    public static function getCount(){
+    public static function getCount($department){
         $dbEmployee = new Model_Db_Table_Employee();
-        $data = $dbEmployee->getCount();
+        $data = $dbEmployee->getCount($department);
         $result = current(current($data));
         return $result;
     }

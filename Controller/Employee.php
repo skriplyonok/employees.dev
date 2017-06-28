@@ -11,7 +11,7 @@ class Controller_Employee extends System_Controller
         $limit = empty($params['select-limit']) ? 2 : $params['select-limit'];
         try {
             $all = Model_Employee :: getAll($limit, ($activePage-1)*$limit, $department);
-            $count = Model_Employee::getCount();
+            $count = Model_Employee::getCount($department);
             $departments = Model_Department::getAll();
 
             $this->view->setParam('all', $all);

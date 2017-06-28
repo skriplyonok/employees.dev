@@ -1,4 +1,8 @@
 <?php
+
+/**
+ * Class System_Router
+ */
 class System_Router
 {
     /**
@@ -68,12 +72,12 @@ class System_Router
         include $layoutFileName;
     }
 
+
     /**
-     *
-     * @param string $file
-     * @param string $controller
-     * @param string $actionName
-     * @param string $args
+     * @param $file
+     * @param $controllerName
+     * @param $actionName
+     * @param $args
      */
     private function _getController(&$file, &$controllerName, &$actionName, &$args)
     {

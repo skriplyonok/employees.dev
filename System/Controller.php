@@ -5,46 +5,20 @@
  */
 abstract class System_Controller
 {
-
     /**
      *
      * @var System_View
      */
     public $view;
-    
-    /**
-     *
-     * @var int
-     */
-    protected $_userId;
-
-    /**
-     * @var
-     */
-    protected $_tableName;
-
-    /**
-     * @var
-     */
-    protected $_modelName;
-
     /**
      * @var
      */
     protected $_args;
-
-
     /**
      * @param $args
      */
     public function setArgs($args)
     {
-//        if(in_array('table', $args) )
-//        {
-//            $this->_tableName = array_pop($args);
-//            $this->_modelName = 'Model_' . ucfirst($this->_tableName);
-//            array_pop($args);
-//        }
         $this->_args = $args;
     }
     
@@ -54,12 +28,6 @@ abstract class System_Controller
      */
     public function getArgs()
     {
-//        $tempArgs = array();
-//        $count = count($this->_args);
-//        for($i = 0; $i < $count - 1; $i += 2)
-//        {
-//            $tempArgs[$this->_args[$i]] = $this->_args[$i+1];
-//        }
         return $this->_args;
     }
 
