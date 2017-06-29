@@ -5,7 +5,7 @@
 $employees = $view->getParam('all');
 $limit = $view->getParam('limit');
 $departments = $view->getParam('departments');
-$selectValues = [2, 4, 6];
+$selectValues = [20, 40, 50, 100];
 $url = rtrim($_SERVER['REQUEST_URI'], '/\\');
 $urlArr = explode('/', $url);
 if (is_numeric(end($urlArr))){

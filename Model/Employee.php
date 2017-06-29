@@ -98,18 +98,18 @@ abstract class Model_Employee
 
             $count = $dataXML->count();
             for ($key = 0; $key < $count; $key++){
-                if($dataXML->employee[$key]->salary_type){
+                if((int)$dataXML->employee[$key]->salary_type){
                     $all[$key]  = new Model_EmployeeMonthly();
                 }else{
                     $all[$key]  = new Model_EmployeeHourly();
-                    $all[$key]->hours = isset($dataXML->employee[$key]->hours) ? (string)$dataXML->employee[$key]->hours : null;
+                    $all[$key]->hours = isset($dataXML->employee[$key]->hours) ? (int)$dataXML->employee[$key]->hours : null;
                 }
                 $all[$key]->id             = (string)$dataXML->employee[$key]->id;
                 $all[$key]->firstname      = (string)$dataXML->employee[$key]->firstname;
                 $all[$key]->lastname       = (string)$dataXML->employee[$key]->lastname;
                 $all[$key]->middlename     = (string)$dataXML->employee[$key]->middlename;
-                $all[$key]->salary         = (string)$dataXML->employee[$key]->salary;
-                $all[$key]->salary_type    = (string)$dataXML->employee[$key]->salary_type;
+                $all[$key]->salary         = (int)$dataXML->employee[$key]->salary;
+                $all[$key]->salary_type    = (int)$dataXML->employee[$key]->salary_type;
                 $all[$key]->position       = (string)$dataXML->employee[$key]->position;
                 $all[$key]->birthday       = (string)$dataXML->employee[$key]->birthday;
                 $all[$key]->department_name = (string)$dataXML->employee[$key]->department_name;

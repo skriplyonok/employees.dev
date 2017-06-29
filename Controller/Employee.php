@@ -8,7 +8,7 @@ class Controller_Employee extends System_Controller
         $department = !empty($args) && !is_numeric(current($args)) ? array_shift($args) : '';
         $activePage = empty($args) ? 1 : current($args);
         $params = $this->getParams();
-        $limit = empty($params['select-limit']) ? 2 : $params['select-limit'];
+        $limit = empty($params['select-limit']) ? 20 : $params['select-limit'];
         try {
             $all = Model_Employee :: getAll($limit, ($activePage-1)*$limit, $department);
             $count = Model_Employee::getCount($department);
