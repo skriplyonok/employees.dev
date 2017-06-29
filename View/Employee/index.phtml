@@ -15,12 +15,18 @@ $url = implode('/', $urlArr);
 ?>
 <h1>Сотрудники</h1>
 <form action="<?= $url ?>" id="select-menu-form" method="post">
-    <select name="select-department">
+    <div class="menu form-item">
+        <a href="/">Главная</a>
+    </div>
+    <div class="menu form-item">
+        <a href="/employee">Все сотрудники</a>
+    </div>
+    <select class="form-item" name="select-department">
         <?php foreach ($departments as $department): ?>
             <option value="<?= $department->slug ?>"<?= in_array($department->slug, $urlArr) ? ' selected ' : '' ?>><?= $department->name ?></option>
         <?php endforeach; ?>
     </select>
-    <select name="select-limit">
+    <select class="form-item" name="select-limit">
         <?php foreach ($selectValues as $value): ?>
             <option value="<?= $value ?>"<?= $value == $limit ? ' selected ' : '' ?>><?= $value ?></option>
         <?php endforeach; ?>
@@ -50,9 +56,9 @@ $url = implode('/', $urlArr);
             <td><?= $employee->middlename; ?></td>
             <td><?= $employee->department_name; ?></td>
             <td><?= $employee->salary; ?></td>
-            <td><?= $employee->salary_type; ?></td>
+            <td><?= $employee->salary_type ? 'Ставка' : 'Почасово' ?></td>
             <td><?= $employee->position; ?></td>
-            <td><?= $employee->birthday; ?></td>
+            <td><?= $employee->birthday ?></td>
         </tr>
     <?php endforeach; ?>
     </tbody>

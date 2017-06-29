@@ -16,7 +16,6 @@ define('SITE_PATH', $sitePath);
 $config = file_get_contents(SITE_PATH . DS . 'config.xml');
 
 $configXML = new SimpleXMLElement($config);
-
 $host     = (string)$configXML->db->host;
 $dbname   = (string)$configXML->db->dbname;
 $username = (string)$configXML->db->username;

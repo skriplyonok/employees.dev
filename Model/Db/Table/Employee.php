@@ -20,6 +20,7 @@ class Model_Db_Table_Employee extends System_Db_Table
           from employee JOIN department
           on employee.department_id = department.id'
             . $department
+            . ' order by employee.id'
             . $limit
             . $offset;
         $sth    = $this->getConnection()->prepare($sql);

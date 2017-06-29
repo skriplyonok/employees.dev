@@ -65,7 +65,7 @@ class Model_Employee
                 $all[$key]  = new self();
                 $all[$key]->id             = $value->id;
                 $all[$key]->firstname      = $value->firstname;
-                $all[$key]->lastName       = $value->lastname;
+                $all[$key]->lastname       = $value->lastname;
                 $all[$key]->middlename     = $value->middlename;
                 $all[$key]->department_id  = isset($value->department_id) ? $value->department_id : null;
                 $all[$key]->salary         = $value->salary;

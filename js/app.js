@@ -12,11 +12,11 @@ window.onload = function() {
         var value = this.options[this.selectedIndex].value;
         var url = window.location.pathname;
         url = url.split('/');
+        if(!isNaN(url[url.length-1])){
+            url.pop();
+        }
         if(url.length == 2){
             url[url.length] = value;
-        }else if(!isNaN(url[url.length-1])){
-            url[url.length-2] = value;
-            // url.pop();
         }else{
             url[url.length-1] = value;
         }
