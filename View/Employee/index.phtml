@@ -15,13 +15,8 @@ $url = implode('/', $urlArr);
 ?>
 <h1>Сотрудники</h1>
 <form action="<?= $url ?>" id="select-menu-form" method="post">
-    <div class="menu form-item">
-        <a href="/">Главная</a>
-    </div>
-    <div class="menu form-item">
-        <a href="/employee">Все сотрудники</a>
-    </div>
     <select class="form-item" name="select-department">
+        <option value="">Все сотрудники</option>
         <?php foreach ($departments as $department): ?>
             <option value="<?= $department->slug ?>"<?= in_array($department->slug, $urlArr) ? ' selected ' : '' ?>><?= $department->name ?></option>
         <?php endforeach; ?>
