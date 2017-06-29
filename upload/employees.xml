@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<employees>
+    <employee>
+        <id>1</id>
+        <firstname>Федр</firstname>
+        <lastname>Федоров</lastname>
+        <middlename>Федорович</middlename>
+        <department_name>Программисты</department_name>
+        <salary>300</salary>
+        <salary_type>1</salary_type>
+        <position>PHP</position>
+        <birthday>1987-05-06</birthday>
+        <hours></hours>
+    </employee>
+    <employee>
+        <id>2</id>
+        <firstname>Максим</firstname>
+        <lastname>Максимов</lastname>
+        <middlename>Максимович</middlename>
+        <department_name>Верстальщики</department_name>
+        <salary>2</salary>
+        <salary_type>0</salary_type>
+        <position>Front-end</position>
+        <birthday>1990-07-21</birthday>
+        <hours>170</hours>
+    </employee>
+</employees>

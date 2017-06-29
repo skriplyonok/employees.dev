@@ -23,10 +23,6 @@ abstract class Model_Employee
      */
     public $middlename;
     /**
-     * @var int
-     */
-    public $department_id;
-    /**
      * @var float
      */
     public $salary;
@@ -70,7 +66,6 @@ abstract class Model_Employee
                 $all[$key]->firstname      = $value->firstname;
                 $all[$key]->lastname       = $value->lastname;
                 $all[$key]->middlename     = $value->middlename;
-                $all[$key]->department_id  = isset($value->department_id) ? $value->department_id : null;
                 $all[$key]->salary         = $value->salary;
                 $all[$key]->salary_type    = (int)$value->salary_type;
                 $all[$key]->position       = $value->position;
@@ -94,4 +89,32 @@ abstract class Model_Employee
      * @return mixed
      */
     public abstract function getSalary();
+
+    public static function getAllFromXML(){
+        $data = file_get_contents(SITE_PATH . DS . 'upload/employees.xml');
+        $all = [];
+        if (!empty($data)){
+            $dataXML = new SimpleXMLElement($data);
+
+            $count = $dataXML->count();
+            for ($key = 0; $key < $count; $key++){
+                if($dataXML->employee[$key]->salary_type){
+                    $all[$key]  = new Model_EmployeeMonthly();
+                }else{
+                    $all[$key]  = new Model_EmployeeHourly();
+                    $all[$key]->hours = isset($dataXML->employee[$key]->hours) ? (string)$dataXML->employee[$key]->hours : null;
+                }
+                $all[$key]->id             = (string)$dataXML->employee[$key]->id;
+                $all[$key]->firstname      = (string)$dataXML->employee[$key]->firstname;
+                $all[$key]->lastname       = (string)$dataXML->employee[$key]->lastname;
+                $all[$key]->middlename     = (string)$dataXML->employee[$key]->middlename;
+                $all[$key]->salary         = (string)$dataXML->employee[$key]->salary;
+                $all[$key]->salary_type    = (string)$dataXML->employee[$key]->salary_type;
+                $all[$key]->position       = (string)$dataXML->employee[$key]->position;
+                $all[$key]->birthday       = (string)$dataXML->employee[$key]->birthday;
+                $all[$key]->department_name = (string)$dataXML->employee[$key]->department_name;
+            }
+        }
+        return $all;
+    }
 }

@@ -24,5 +24,14 @@ class Controller_Employee extends System_Controller
             throw new Exception('404 error! Page not found');
         }
     }
+    public function xmlAction(){
+        try{
+            $all = Model_Employee::getAllFromXML();
+            $this->view->setParam('all', $all);
+        }
+        catch(Exception $e) {
+            throw new Exception('404 error! Page not found');
+        }
+    }
 }
 
