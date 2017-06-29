@@ -1,11 +1,11 @@
 <?php
 
+
 /**
  * Class Model_Employee
  */
-class Model_Employee
+abstract class Model_Employee
 {
-
     /**
      * @var int
      */
@@ -27,7 +27,7 @@ class Model_Employee
      */
     public $department_id;
     /**
-     * @var int
+     * @var float
      */
     public $salary;
     /**
@@ -46,8 +46,6 @@ class Model_Employee
      * @var
      */
     public $department_name;
-
-
     /**
      * @param string $limit
      * @param string $offset
@@ -62,7 +60,12 @@ class Model_Employee
         if(!empty($data))
         {
             foreach ($data as $key => $value) {
-                $all[$key]  = new self();
+                if($value->salary_type){
+                    $all[$key]  = new Model_EmployeeMonthly();
+                }else{
+                    $all[$key]  = new Model_EmployeeHourly();
+                    $all[$key]->hours = isset($value->hours) ? $value->hours : null;
+                }
                 $all[$key]->id             = $value->id;
                 $all[$key]->firstname      = $value->firstname;
                 $all[$key]->lastname       = $value->lastname;
@@ -77,10 +80,7 @@ class Model_Employee
         }
         return $all;
     }
-
     /**
-     * @param $limit
-     * @param $offset
      * @param $department
      * @return mixed
      */
@@ -90,4 +90,8 @@ class Model_Employee
         $result = current(current($data));
         return $result;
     }
+    /**
+     * @return mixed
+     */
+    public abstract function getSalary();
 }
