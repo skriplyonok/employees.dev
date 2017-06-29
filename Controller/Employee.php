@@ -1,7 +1,13 @@
 <?php
 
+/**
+ * Class Controller_Employee
+ */
 class Controller_Employee extends System_Controller
 {
+    /**
+     * @throws Exception
+     */
     public function indexAction()
     {
         $args = $this->getArgs();
@@ -24,6 +30,10 @@ class Controller_Employee extends System_Controller
             throw new Exception('404 error! Page not found');
         }
     }
+
+    /**
+     * @throws Exception
+     */
     public function xmlAction(){
         try{
             $all = Model_Employee::getAllFromXML();

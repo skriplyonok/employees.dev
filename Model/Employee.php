@@ -90,6 +90,9 @@ abstract class Model_Employee
      */
     public abstract function getSalary();
 
+    /**
+     * @return array
+     */
     public static function getAllFromXML(){
         $data = file_get_contents(SITE_PATH . DS . 'upload/employees.xml');
         $all = [];
