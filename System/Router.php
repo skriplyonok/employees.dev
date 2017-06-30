@@ -81,7 +81,7 @@ class System_Router
      */
     private function _getController(&$file, &$controllerName, &$actionName, &$args)
     {
-         $route = empty($_GET['route']) ? 'index' : $_GET['route'];
+         $route = empty($_GET['route']) ? 'Index' : $_GET['route'];
 
         // Получаем раздельные части
         $route = trim($route, '/\\');
@@ -92,7 +92,7 @@ class System_Router
         // Находим контроллер
         $cmd_path = $this->_path;
         foreach ($parts as $part) {
-            $fullpath = $cmd_path . $part;
+            $fullpath = $cmd_path . ucfirst($part);
 
             // Проверка существования папки
             if (is_dir($fullpath)) {
@@ -117,7 +117,7 @@ class System_Router
         }
         // если урле не указан контролер, то испольлзуем поумолчанию index
         if (empty($controllerName)) {
-            $controllerName = 'index';
+            $controllerName = 'Index';
         }
         if (empty($actionName)) {
             $actionName = 'index';
